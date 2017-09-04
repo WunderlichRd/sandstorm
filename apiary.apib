@@ -1,0 +1,159 @@
+FORMAT: 1A
+HOST: http://airport.api.aero
+
+# Airport API
+
+Expore the APIs in the interactive documentation below
+
+To get started, you need to create an [Application](http://example.net/) which will provide you with the API key you need to authenticate calls from your application.
+
+## Airports Info by Code [/airports/{airportCode}?user_key={user_key}]
+
+This operation returns information about the given airport code. The code must be the 3 letter IATA code.
+
++ Parameters
+
+   + airportCode - the custer account ID
+   + user_key - a key provisioned for your application via the developer portal
+
+### Retrieve Airport [GET]
+
++ Response 200
+
+   + Headers
+
+            Date: Wed, 13 Apr 2016 16:33:26 GMT
+            Connection: keep-alive
+            
+
+   + Body
+
+            {
+               "processingDurationMillis":115,
+               "authorisedAPI":true,
+               "success":true,
+               "airline":null,
+               "errorMessage":null,
+               "airports":
+               [
+                   {
+                       "code":"ORK",
+                       "name":"Cork",
+                       "city":"Cork",
+                       "country":"Ireland",
+                       "timezone":"Europe/Dublin",
+                       "lat":51.841269,
+                       "lng":-8.491111,
+                       "terminal":null,
+                       "gate":null
+                   }
+               ]
+            }
+
+
+## Distance Between Airports [/airport/distance/{airportCodeFrom}/{airportCodeTo}?user_key={user_key}&units={units}]
+
+Get the distance between two airports. The API will return distance in either imperial or metric units.
+
++ Parameters
+
+   + airportCodeFrom
+   + airportCodeTo
+   + user_key
+   + units (optional)
+
+### Get Distance [GET]
+
++ Response 200
+
+   + Headers 
+
+            Date: Wed, 13 Apr 2016 16:47:17 GMT
+            Connection: keep-alive
+            Content-Type: application/json
+
+   + Body
+
+            {
+               "processingDurationMillis":868,
+               "authorisedAPI":true,
+               "success":true,
+               "airline":null,
+               "errorMessage":null,
+               "distance":"8,208.6",
+               "units":"km"
+            }
+
+## List all Airports [/airport?user_key={user_key}]
+
+This operation returns all the major IATA airports.
+
++ Parameters
+
+   + user_key
+
+### Get Airports [GET]
+
++ Response 200
+
+   + Headers
+
+            Date: Wed, 13 Apr 2016 16:55:58 GMT
+            Connection: keep-alive
+
+   + Body
+
+            {
+               "processingDurationMillis":115,
+               "authorisedAPI":true,
+               "success":true,
+               "airline":null,
+               "errorMessage":null,
+               "airports":
+               [
+                   {
+                       "code":"BBA",
+                       "name":"Balmaceda",
+                       "city":"Balmaceda",
+                       "country":"Chile",
+                       "timezone":"America/Santiago",
+                       "lat":-45.916058,
+                       "lng":-71.689475,
+                       "terminal":null,
+                       "gate":null
+                   },
+                    {
+                       "code":"SFO",
+                       "name":"San Francisco International",
+                       "city":"San Francisco",
+                       "country":"USA",
+                       "timezone":"America/LosAngeles",
+                       "lat":37.7749,
+                       "lng":-122.4194,
+                       "terminal":null,
+                       "gate":null
+                   },
+                    {
+                       "code":"SJC",
+                       "name":"San Jose International",
+                       "city":"San Jose",
+                       "country":"USA",
+                       "timezone":"America/LosAngeles",
+                       "lat":37.3382,
+                       "lng":-121.8863,
+                       "terminal":null,
+                       "gate":null
+                   },
+                    {
+                       "code":"BOS",
+                       "name":"Logan International",
+                       "city":"Boston",
+                       "country":"USA",
+                       "timezone":"America/LA",
+                       "lat":37.3382,
+                       "lng":-121.8863,
+                       "terminal":null,
+                       "gate":null
+                   }
+               ]
+            }
